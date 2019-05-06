@@ -18,7 +18,7 @@ public class MyTest extends TestRunner {
 
         String actualTitle = driver.getTitle();
 
-        Assert.assertEquals ("ssdfdf", EXPECTED_TITLE);
+        Assert.assertEquals (actualTitle, EXPECTED_TITLE);
 
 
     }
