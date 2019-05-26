@@ -1,4 +1,4 @@
-package com.skillup.automation;
+package com.skillup.automation.Lesson2;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

@@ -1,10 +1,13 @@
-package com.skillup.automation;
+package com.skillup.automation.Lesson1;
+
+import com.skillup.automation.Lesson1.Car;
+import com.skillup.automation.Lesson1.Cat;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        // Ссилочні типи даних (передаються по ссилці) // Link data Type
+        // Ссилочні типи даних (передаються по ссилці) // Link Data Type
 
        // Object o = "asd"; //all classes comes from Object. Type is Object, value is String
         //String str = ";"; //набор символов или текст  (array of chars

@@ -1,4 +1,4 @@
-package com.skillup.automation;
+package com.skillup.automation.Lesson1;
 
 public class Car {
 
