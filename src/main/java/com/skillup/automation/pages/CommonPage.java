@@ -33,7 +33,7 @@ public class CommonPage {
     }
 
     By find(String locator) {
-        if (locator.contains("//") || locator.startsWith("./")){
+        if (locator.contains("//") || locator.startsWith("./")) {
             return By.xpath(locator);
         }
 

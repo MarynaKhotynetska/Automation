@@ -45,9 +45,6 @@ public class NegativeSignUpTest extends TestRunner {
     }
 
 
-
-
-
     @Test
     public void verifyErrorMessageForEmptyPasswordField() {
         driver.get(LINKED_IN_JOIN_PAGE_URL);
@@ -71,11 +68,6 @@ public class NegativeSignUpTest extends TestRunner {
         Assert.assertEquals(alertMessageText, EXPECTED_EMAIL_ERROR_MESSAGE, "Alert Message is incorrect");
     }
 }
-
-
-
-
-
 
 
 //    @Test

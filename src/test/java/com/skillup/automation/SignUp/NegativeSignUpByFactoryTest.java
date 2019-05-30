@@ -1,40 +1,35 @@
 package com.skillup.automation.SignUp;
 
 import com.skillup.automation.TestRunner;
-import com.skillup.automation.pages.OnboardingPage;
 import com.skillup.automation.pages.SignUpPage;
-import com.skillup.automation.pages.WallPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Random;
+public class NegativeSignUpByFactoryTest extends TestRunner {
 
-public class SignUpTest extends TestRunner {
-
-    private SignUpPage signUpPage;
-    private OnboardingPage onboardingPage;
 
     private static final String LINKED_IN_JOIN_PAGE_URL = "https://www.linkedin.com/start/join";
 
+    private static final String EXPECTED_EMAIL_ERROR_MESSAGE = "Please enter your email address";
+
 
     @BeforeMethod
-    public void before() {
-        signUpPage = new SignUpPage (driver);
-         onboardingPage= new OnboardingPage (driver);
-
-
+    private void before() {
+        signUpPage = new SignUpPage(driver);
     }
+
     @Test
-    public void signup () {
+    public void signup() {
+
         driver.get(LINKED_IN_JOIN_PAGE_URL);
 
         signUpPage.enterFirstName("firstName");
         signUpPage.enterLastName("lastName");
-        signUpPage.enterEmail("skillauto904904@gmail.com");
+        signUpPage.enterEmail("");
         signUpPage.enterPassword("skillauto904");
         signUpPage.clickjoinButton("");
 
 
-
     }
+
 }

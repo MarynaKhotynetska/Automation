@@ -4,7 +4,6 @@ import com.skillup.automation.Data.LoginTestData;
 import com.skillup.automation.TestRunner;
 import com.skillup.automation.pages.LoginPage;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class NegativeLoginTest extends TestRunner {
@@ -39,18 +38,15 @@ public class NegativeLoginTest extends TestRunner {
     }
 
 
-
-
     //DataProvider для запуску тестів
 
 
-
     @Test(dataProvider = "datalogin", dataProviderClass = LoginTestData.class)
-    public void ddtLoginTest (String email, String pass, String expectedError) {
+    public void ddtLoginTest(String email, String pass, String expectedError) {
         loginPage
                 .open()
                 .enterEmail(email)
-                .enterPassword (pass)
+                .enterPassword(pass)
                 .clickLoginButton()
                 .assertEmailErrorMessage(expectedError);
 

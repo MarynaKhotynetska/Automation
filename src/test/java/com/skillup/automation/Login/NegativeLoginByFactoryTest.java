@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class NegativeLoginByFactoryTest extends TestRunner {
 
-    private static final String EXPECTED_ERROR_MESSAGE = "Please enter a password.";
+    private static final String EXPECTED_ERROR_MESSAGE = "Введите пароль.";
 
     @Test
     public void test() {
