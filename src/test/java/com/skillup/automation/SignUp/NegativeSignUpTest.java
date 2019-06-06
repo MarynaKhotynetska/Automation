@@ -14,7 +14,7 @@ public class NegativeSignUpTest extends TestRunner {
 
     private static final String LINKED_IN_JOIN_PAGE_URL = "https://www.linkedin.com/start/join";
 
-    private static final String EXPECTED_EMAIL_ERROR_MESSAGE = "Please enter your email address";
+    private static final String EXPECTED_EMAIL_ERROR_MESSAGE = "Укажите пароль.";
 
     private ElementHelper helper = new ElementHelper();
     private SignUpPage signUpPage;
@@ -41,7 +41,7 @@ public class NegativeSignUpTest extends TestRunner {
         WebElement alertMessage = driver.findElement(By.cssSelector(LocatorsClass.ERROR_ALERT_MESSAGE_CSS_LOCATOR));
         String alertMessageText = alertMessage.getText();
 
-        Assert.assertEquals(alertMessageText, EXPECTED_EMAIL_ERROR_MESSAGE, "Alert Message is incorrect");
+        Assert.assertEquals(alertMessageText, EXPECTED_EMAIL_ERROR_MESSAGE, "Укажите пароль.");
     }
 
 
@@ -65,7 +65,7 @@ public class NegativeSignUpTest extends TestRunner {
         WebElement alertMessage = driver.findElement(By.cssSelector(LocatorsClass.ERROR_ALERT_MESSAGE_CSS_LOCATOR));
         String alertMessageText = alertMessage.getText();
 
-        Assert.assertEquals(alertMessageText, EXPECTED_EMAIL_ERROR_MESSAGE, "Alert Message is incorrect");
+        Assert.assertEquals(alertMessageText, EXPECTED_EMAIL_ERROR_MESSAGE, "Укажите пароль.");
     }
 }
 

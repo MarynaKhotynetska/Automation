@@ -5,8 +5,7 @@ import org.testng.Assert;
 
 public class OnboardingPage extends CommonPage {
     public OnboardingPage(WebDriver driver) {
-        super();
-        this.driver = driver;
+        super(driver);
     }
 
     public OnboardingPage assertInOnPage(String partOfUrl) {
@@ -15,4 +14,3 @@ public class OnboardingPage extends CommonPage {
         return this;
     }
 }
-

@@ -6,8 +6,10 @@ import com.skillup.automation.pages.LoginPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static com.skillup.automation.Configuration.UrlsLoginFactory.LOGIN_URL;
+
 public class NegativeLoginTest extends TestRunner {
-    private static final String EXPECTED_ERROR_MESSAGE = "Please enter a password.";
+    private static final String EXPECTED_ERROR_MESSAGE = "Введите пароль.";
 
     private LoginPage loginPage;
 
@@ -18,20 +20,20 @@ public class NegativeLoginTest extends TestRunner {
 
     @Test
     public void wrongEmailTest() {
-//        driver.get(LOGIN_URL);
-//        driver.get(LoginPage.LOGIN_URL);
+        driver.get(LOGIN_URL);
+        driver.get(LoginPage.LOGIN_URL);
 
-//        loginPage.open();
-//        loginPage.enterEmail("myemail@email.com");
-//        loginPage.enterPassword("");
-//        loginPage.clickLoginButton();
+        loginPage.open();
+        loginPage.enterEmail("myemail@email.com");
+        loginPage.enterPassword("");
+        loginPage.clickLoginButton();
 
-        loginPage
-                .open()
-                .enterEmail("myemail@email.com")
-                .enterPassword("")
-                .clickLoginButton()
-                .assertEmailErrorMessage(EXPECTED_ERROR_MESSAGE);
+//        loginPage
+//                .open()
+//                .enterEmail("myemail@email.com")
+//                .enterPassword("")
+//                .clickLoginButton()
+//                .assertEmailErrorMessage(EXPECTED_ERROR_MESSAGE);
 
 //        loginPage.assertEmailErrorMessage(EXPECTED_ERROR_MESSAGE);
 //        Assert.assertEquals(loginPage.getEmailErrorMessage(), EXPECTED_ERROR_MESSAGE, "Error message not match");

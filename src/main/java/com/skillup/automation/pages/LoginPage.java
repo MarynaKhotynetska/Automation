@@ -1,6 +1,6 @@
 package com.skillup.automation.pages;
 
-import com.skillup.automation.Lesson1.Wait;
+import com.skillup.automation.Configuration.Wait;
 import com.skillup.automation.utils.ElementHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

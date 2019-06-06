@@ -8,6 +8,10 @@
     <artifactId>automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <suite>smoke.xml</suite>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -46,16 +50,20 @@
                 </configuration>
             </plugin>
 
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version> 2.12.4</version>
-            <configuration>
-                <suiteXmlFiles>
-                    <suiteXmlFile>smoke.xml</suiteXmlFile>
-                </suiteXmlFiles>
-            </configuration>
-        </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/java/com/skillup/automation/suits/${suite}</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <browser>chrome</browser>
+                    </systemPropertyVariables>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

@@ -4,87 +4,68 @@ import com.skillup.automation.pages.LoginPage;
 import com.skillup.automation.pages.OnboardingPage;
 import com.skillup.automation.pages.SignUpPage;
 import com.skillup.automation.pages.WallPage;
-import com.skillup.automation.pagesByFactory.SignUpPageFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.skillup.automation.utils.WebDriverFactory;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static com.skillup.automation.Lesson1.Wait.FIVE_SECONDS;
+import static com.skillup.automation.Configuration.Wait.FIVE_SECONDS;
 
 public class TestRunner {
     protected WebDriver driver = null;
-    protected SignUpPage signUpPage;
     protected LoginPage loginPage;
     protected WallPage wallPage;
+    protected SignUpPage signUpPage;
     protected OnboardingPage onboardingPage;
-
-
 
     @BeforeSuite
     public void beforeSuite() {
-        System.out.println("Before suite");
-        WebDriverManager.chromedriver().setup();
-        //second metod
-//        driver = new ChromeDriver();
-//        driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait (FIVE_SECONDS, TimeUnit.SECONDS);
-
-    }
-
-    @BeforeClass
-    public void beforeClass() {
-        System.out.println("Before class");
+        WebDriverFactory.setUpBrowserDrivers();
     }
 
     @BeforeMethod
     public void beforeMethod() {
-        //second variant
-//            driver.manage().deleteAllCookies();
-
-        System.out.println("Before method");
-        driver = new ChromeDriver();
+        driver = WebDriverFactory.initDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(FIVE_SECONDS, TimeUnit.SECONDS);
 
-
-        signUpPage = new SignUpPage(driver);
         loginPage = new LoginPage(driver);
+        signUpPage = new SignUpPage(driver);
         wallPage = new WallPage(driver);
         onboardingPage = new OnboardingPage(driver);
-
     }
-
 
     @AfterMethod
-    public void afterMethod() {
-        System.out.println("After method");
-        driver.quit();   //не закриває вкладку а закриває повністю браузер
+    public void saveScreenShot(ITestResult result) throws IOException {
+        if(!result.isSuccess()) {
+            String screenShotName = String.format("screenshot_%s_%s.png", result.getMethod().getMethodName(), System.currentTimeMillis());
+            File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String destPath = Paths.get(System.getProperty("user.dir"), "screenshots", screenShotName).toAbsolutePath().toString();
 
+            FileUtils.copyFile(source, new File(destPath));
+        }
+
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
-
-    @AfterClass
-    public void afterClass() {
-        System.out.println("After class");
-
-    }
-
-
-    @AfterSuite
-    public void afterSuite() {
-        //second variant
-//        driver.quit();
-        System.out.println("After suite");
-    }
-
-
-    //метод для закриття окремих вкладок після тесту
-
+//    @AfterMethod
+//    public void afterMethod() {
+//
+//    }
 
     private void closeNotUsedTabs() {
         String currentTab = driver.getWindowHandle();
@@ -102,7 +83,3 @@ public class TestRunner {
     }
 
 }
-
-
-
-
